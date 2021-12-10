@@ -1,0 +1,81 @@
+*{
+    margin:0;
+}
+
+html,body{
+    height:100%;
+}
+
+body{
+    display:flex;
+}
+
+.popUp{
+    height:100%;
+    width:100%;
+    background-color:rgba(193, 193, 193, 0.66);
+    position:absolute;
+    top:0;
+    left:0;
+    display:none;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.popUp img{
+    height:100px;
+}
+.hide{
+    display:none;
+}
+.close{
+    cursor:pointer;
+    border:none;
+    background:none;
+    font-weight:bold;
+    float:right;
+}
+.close1{
+    color:black;
+}
+.close2{
+    color:grey;
+}
+
+.product{
+    height:200px;
+    width:200px;
+    border-radius:10px;
+    border:2px solid black;
+    box-shadow:2px 2px 2px black;
+    margin-top:10px;
+    margin-left:8px;
+    cursor:pointer;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.product img{
+    height:100px;
+}
+
+.Maton{
+    background-color:blue;
+    color:white;
+}
+.Yamaha{
+    background-color:green;
+    color:white;
+}
+.Fender{
+    background-color:red;
+    color:white;
+}
+.Normal{
+    background-color:white;
+    color:black;
+}

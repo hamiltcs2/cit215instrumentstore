@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="instruments-app">
+        <button v-on:click="emptyCart">Cart ({{cart}})</button>
+        <button v-on:click="addInstrument">Add New Instrument</button>
+        <div v-bind:class="{hide: !adder}" class="popUp">
+            <button v-on:mouseover="closerEnter"
+                    v-on:mouseleave="closerLeave"
+                    v-on:click="closer"
+                    v-bind:class="getCloserClass(hover)"
+                    class="close"
+            >X</button>
+            <h1>Add New Instrument</h1>
+            <form @submit.prevent="">
+                <input type="text" v-model="form.name" placeholder="name">
+                <input type="text" v-model="form.type" placeholder="type">
+                <input type="number" v-model="form.price" name="price" value="" maxlength="12" required="required" step="0.01" placeholder="0.00" />
+                <input type="text" v-model="form.image" name="image" placeholder="Enter an image URL">
+                <select v-model="form.selected">
+                    <option disabled value="">Brand: </option>
+                    <option>Fender</option>
+                    <option>Yamaha</option>
+                    <option>Maton</option>
+                </select>
+                <button v-on:click="addNewInstrument">Submit</button>
+            </form>
+
+
+
+            
+        </div>
+    <div v-for="(item, index) in products">
+        <div v-bind:class="{hide: item.cart}">
+        <div v-on:mouseover="mouseEnter(index)"
+             v-on:mouseleave="mouseLeave(index)"
+             v-on:click="getPopup(index)"
+             v-bind:class="getClass(index)"
+             class ="product">
+            <div>
+                <div>{{item.name}}</div>
+                <button v-on:click="addToCart(index)">Add to Cart</button>
+                <img :src=validateImage(item.image)>
+            </div>
+        </div>
+        </div>
+        <div v-bind:class="{hide: !item.pop}" class="popUp">
+            <button v-on:mouseover="closeEnter(index)"
+                    v-on:mouseleave="closeLeave(index)"
+                    v-on:click="close(index)"
+                    v-bind:class="getCloseClass(index, item.closeHover)"
+                    class="close"
+            >X</button>
+            <div>name: {{item.name}}</div>
+            <div>price: ${{item.price}}</div>
+            <div>type: {{item.type}}</div>
+            <div>brand: {{item.brand}}</div>
+            <img :src=validateImage(item.image)>
+            <button v-on:click="addToCart(index)">Add to Cart</button>
+        </div>
+    </div>
+    </div>
+    <script src="vue.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
